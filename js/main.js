@@ -1,19 +1,48 @@
 //////////// TASK 1
 
 const userNames = ["Петрик Ольга Іванівна", "Гнатюк Петро Антонович", "Рудко Андрій Опанасович"];
-let initials = []
-midResult = userNames.join('').replace(/[a-zа-яі]/g, '')
+
+const midResult = userNames.join(' / ').replace(/[a-zа-яі]/g, '')
 console.log(midResult);
 
-initials = midResult.split('').map(a => a[0]).join('.');
+const mid2Result = midResult.split(' / ');
+
+initials = mid2Result.map((element) => {
+
+    const initParts = element.split(' ');
+    return initParts.join('.') + '.';
+} ); 
+
+initials.sort();
 
 console.log(initials);
 
 
 ///////////////// TASK 2
-const currentMaxValue = 4589;
-let reverseMaxValue = currentMaxValue.toString().split("").reverse().join("");
-console.log(reverseMaxValue)
+const currentMaxValue = -4589;
+
+let reverseMaxValue
+
+let negative = currentMaxValue < 0;
+
+if (negative){
+    reverseMaxValue = currentMaxValue.toString().split("").reverse();
+
+    const negSignMidValue = reverseMaxValue.splice(0, 4).join('');
+    negSignMidValue2 = '-' + negSignMidValue;
+
+    numMaxValue = parseInt(negSignMidValue2);
+
+    console.log(numMaxValue);
+    
+} else {
+    reverseMaxValue = currentMaxValue.toString().split("").reverse().join("");
+    numMaxValue = parseInt(reverseMaxValue);
+
+    console.log(numMaxValue);
+
+}
+
 
 //////////////////
 
